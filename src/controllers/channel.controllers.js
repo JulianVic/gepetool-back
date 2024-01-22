@@ -19,7 +19,7 @@ const createChannel = async (req, res) => {
     }
     }
 
-const getChannels = async (req, res) => {
+const getAllChannels = async (req, res) => {
     try {
         const channels = await Channel.find();
         res.status(200).json(channels);
@@ -31,5 +31,5 @@ const getChannels = async (req, res) => {
 
 export default {
     createChannel,
-    getChannels
+    getAllChannels
 }

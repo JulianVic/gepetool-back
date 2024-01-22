@@ -5,7 +5,7 @@ import { Server as SocketServer } from "socket.io";
 import {config} from "dotenv";
 config();
 import connectDB from "./src/db/connection.js";
-import chhanelsRouter from "./src/routes/channels.routes.js"
+import channelsRouter from "./src/routes/channels.routes.js"
 import eventHandlers from "./src/eventHandlers/eventHandlers.js";
 
 connectDB();
@@ -21,7 +21,7 @@ app.use(cors({
 
 app.use(express.json());
 
-app.use("/api/channel", chhanelsRouter);
+app.use("/api/channels", channelsRouter);
 
 
 app.use((req, res, next) => {
@@ -36,14 +36,14 @@ app.use((req, res, next) => {
   });
   
 const server = http.createServer(app);
-const io = new SocketServer(server, {
-  cors: {
-    origin: origin,
-  },
-});
+// const io = new SocketServer(server, {
+//   cors: {
+//     origin: origin,
+//   },
+// });
 
 
-io.on("connection", eventHandlers);
+// io.on("connection", eventHandlers);
 
 
 server.listen(PORT, () => {

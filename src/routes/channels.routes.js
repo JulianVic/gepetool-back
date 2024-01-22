@@ -4,6 +4,6 @@ import userController from '../controllers/channel.controllers.js';
 const router = Router();
 
 router.post('/create', userController.createChannel);
-router.get('/get', userController.getChannels);
+router.get('/getAll', userController.getAllChannels);
 
-export default router;
+export default router; 
