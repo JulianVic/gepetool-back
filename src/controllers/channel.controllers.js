@@ -1,6 +1,6 @@
 import Channel from "../models/channel.model.js";
 
-const createChannel = async (req, res) => {
+const createChannel = async (req, res,) => {
     const { name, description } = req.body;
     
     try {
@@ -16,6 +16,7 @@ const createChannel = async (req, res) => {
         res.status(201).json({ msg: "Channel created" });
     } catch (error) {
         res.status(500).json({ msg: "Error in the server" });
+        console.log(error);
     }
     }
 
@@ -29,7 +30,19 @@ const getAllChannels = async (req, res) => {
     }
 }
 
+const deteleChannel = async (req, res) => {
+    const idChannel = req.params.id;
+    try {
+        const channel = await Channel.findByIdAndDelete(idChannel);
+        res.status(200).json({ message: "Channel deleted" });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Error in the server" });
+    }
+}
+
 export default {
     createChannel,
-    getAllChannels
+    getAllChannels,
+    deteleChannel
 }
