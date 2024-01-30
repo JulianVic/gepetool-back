@@ -5,6 +5,7 @@ const router = Router();
 
 router.post('/', userController.createChannel);
 router.get('/', userController.getAllChannels);
-router.delete('/:id', userController.deteleChannel);
+router.delete('/:id', userController.deleteChannel);
+router.get("/wait4newchannel", userController.waitForNewChannel)
 
 export default router; 
